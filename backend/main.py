@@ -21,9 +21,11 @@ from utils.config import settings
 
 app = FastAPI(title="AI Interview Agent")
 
+# UPDATED: Allow all origins so Vercel can make requests without CORS block
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
